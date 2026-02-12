@@ -54,4 +54,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+const withNextIntl = require('next-intl/plugin')('./i18n.ts');
+
+export default withBundleAnalyzer(withNextIntl(nextConfig));
