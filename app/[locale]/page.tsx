@@ -1,9 +1,14 @@
+'use client';
+
 import { Hero } from "@/components/Hero";
 import { FlavorPalette } from "@/components/FlavorPalette";
 import { LazyFeaturedProducts } from "@/components/LazyFeaturedProducts";
 import { LazyTestimonials } from "@/components/LazyTestimonials";
+import { useTranslations } from 'next-intl';
 
 export default function Home() {
+  const t = useTranslations('products');
+
   return (
     <main className="min-h-screen">
       <Hero />
@@ -18,7 +23,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-serif text-fluid-6xl text-primary font-bold mb-4 drop-shadow-sm">
-              Editor's Choice
+              {t('featured')}
             </h2>
             <div className="w-32 h-1 bg-secondary mx-auto rounded-full shadow-glow-secondary" />
           </div>

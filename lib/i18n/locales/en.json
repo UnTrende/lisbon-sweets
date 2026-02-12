@@ -1,0 +1,75 @@
+{
+    "nav": {
+        "home": "Home",
+        "gallery": "Gallery",
+        "designer": "Designer",
+        "about": "About"
+    },
+    "hero": {
+        "tagline": "Handmade with Love in Lisbon",
+        "title": "Petals E",
+        "titleAccent": "Sweets",
+        "description": "Discover artisanal cakes inspired by traditional Portuguese flavors and modern design. Perfect for any celebration or a sweet indulgence.",
+        "ctaPrimary": "Order Your Cake",
+        "ctaSecondary": "Explore Flavors"
+    },
+    "products": {
+        "featured": "Editor's Choice",
+        "featuredTitle": "Featured Creations",
+        "viewCollection": "View Entire Collection",
+        "addToCart": "Add to Cart",
+        "names": {
+            "pastelDeNata": "Pastel de Nata Cake",
+            "sintraForest": "Sintra Forest",
+            "algarveAlmond": "Algarve Almond",
+            "royalRedVelvet": "Royal Red Velvet",
+            "lemonBasil": "Lemon & Basil Breeze",
+            "portWine": "Port Wine Drunkard"
+        }
+    },
+    "footer": {
+        "tagline": "Patisserie & Boulangerie",
+        "description": "Artisanal handmade sweets and cakes crafted with love in Lisbon. Bringing authentic Portuguese flavors to your celebrations since 1998.",
+        "shop": "Shop",
+        "company": "Company",
+        "categories": "Categories",
+        "followUs": "Follow Us:",
+        "madeWith": "Made with",
+        "inLisbon": "in Lisbon"
+    },
+    "gallery": {
+        "title": "The Collection",
+        "description": "Browse our artisanal selection of handcrafted cakes, made with passion and the finest local ingredients.",
+        "categories": {
+            "all": "All",
+            "celebration": "Celebration",
+            "wedding": "Wedding",
+            "everyday": "Everyday",
+            "seasonal": "Seasonal"
+        },
+        "noProducts": "No creations found in this category yet.",
+        "viewAll": "View Entire Gallery"
+    },
+    "about": {
+        "title": "Our Story",
+        "subtitle": "Baking with Lisbon Soul Since 1998",
+        "storyTitle": "Tradition Meets Elegance",
+        "storyP1": "It all started in a small kitchen in Alfama, where the aroma of cinnamon and freshly baked pastry filled the narrow streets. Lisbon Sweet Creations was born from a desire to bring the authentic flavors of Portuguese confectionery to the modern table.",
+        "storyP2": "We believe that a cake is not just a dessert—it's a memory in the making. That's why we use only the finest ingredients: locally sourced almonds from the Algarve, rich chocolates, and fresh fruits from our trusted farmers.",
+        "founders": "Maria & Joan",
+        "role": "Founders & Head Pastry Chefs",
+        "contactTitle": "Get in Touch",
+        "contactDesc": "Having a special event? Let's talk cake.",
+        "form": {
+            "name": "Name",
+            "email": "Email",
+            "message": "Message",
+            "placeholderName": "Your Name",
+            "placeholderEmail": "hello@example.com",
+            "placeholderMessage": "Tell us about your dream cake...",
+            "submit": "Send Message",
+            "successTitle": "Message Sent!",
+            "successDesc": "We'll get back to you soon."
+        }
+    }
+}

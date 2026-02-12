@@ -8,9 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export default function AboutPage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const t = useTranslations('about');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -30,7 +32,7 @@ export default function AboutPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="font-serif text-5xl md:text-7xl text-primary font-bold mb-6"
                     >
-                        Our Story
+                        {t('title')}
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -38,7 +40,7 @@ export default function AboutPage() {
                         transition={{ delay: 0.2 }}
                         className="text-xl text-secondary font-sans font-medium tracking-wide uppercase"
                     >
-                        Baking with Lisbon Soul Since 1998
+                        {t('subtitle')}
                     </motion.p>
                 </div>
             </section>
@@ -66,19 +68,16 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <h2 className="font-serif text-4xl text-primary font-bold">Tradition Meets Elegance</h2>
+                        <h2 className="font-serif text-4xl text-primary font-bold">{t('storyTitle')}</h2>
                         <p className="text-muted-foreground text-lg leading-relaxed font-sans">
-                            It all started in a small kitchen in Alfama, where the aroma of cinnamon and freshly baked pastry filled the narrow streets.
-                            <b> Lisbon Sweet Creations</b> was born from a desire to bring the authentic flavors of Portuguese confectionery to the modern table.
+                            {t('storyP1')}
                         </p>
                         <p className="text-muted-foreground text-lg leading-relaxed font-sans">
-                            We believe that a cake is not just a dessert—it's a memory in the making.
-                            That's why we use only the finest ingredients: locally sourced almonds from the Algarve,
-                            rich chocolates, and fresh fruits from our trusted farmers.
+                            {t('storyP2')}
                         </p>
                         <div className="pt-4">
-                            <div className="font-script text-3xl text-secondary">Maria & Joan</div>
-                            <div className="text-sm text-muted-foreground uppercase tracking-widest mt-1">Founders & Head Pastry Chefs</div>
+                            <div className="font-script text-3xl text-secondary">{t('founders')}</div>
+                            <div className="text-sm text-muted-foreground uppercase tracking-widest mt-1">{t('role')}</div>
                         </div>
                     </motion.div>
                 </div>
@@ -88,8 +87,8 @@ export default function AboutPage() {
             <section className="bg-muted/30 py-20 relative">
                 <div className="container mx-auto px-4 max-w-4xl relative z-10">
                     <div className="text-center mb-12">
-                        <h2 className="font-serif text-4xl text-primary font-bold mb-4">Get in Touch</h2>
-                        <p className="text-muted-foreground">Having a special event? Let's talk cake.</p>
+                        <h2 className="font-serif text-4xl text-primary font-bold mb-4">{t('contactTitle')}</h2>
+                        <p className="text-muted-foreground">{t('contactDesc')}</p>
                     </div>
 
                     <Card className="border-none shadow-xl bg-background/80 backdrop-blur-sm">
@@ -103,27 +102,27 @@ export default function AboutPage() {
                                     <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                                         <span className="text-4xl">✓</span>
                                     </div>
-                                    <h3 className="font-serif text-2xl text-primary font-bold mb-2">Message Sent!</h3>
-                                    <p className="text-muted-foreground">We'll get back to you soon.</p>
+                                    <h3 className="font-serif text-2xl text-primary font-bold mb-2">{t('form.successTitle')}</h3>
+                                    <p className="text-muted-foreground">{t('form.successDesc')}</p>
                                 </motion.div>
                             ) : (
                                 <form className="space-y-6" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium">Name</label>
-                                            <Input placeholder="Your Name" className="bg-white/50" required />
+                                            <label className="text-sm font-medium">{t('form.name')}</label>
+                                            <Input placeholder={t('form.placeholderName')} className="bg-white/50" required />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-sm font-medium">Email</label>
-                                            <Input type="email" placeholder="hello@example.com" className="bg-white/50" required />
+                                            <label className="text-sm font-medium">{t('form.email')}</label>
+                                            <Input type="email" placeholder={t('form.placeholderEmail')} className="bg-white/50" required />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium">Message</label>
-                                        <Textarea placeholder="Tell us about your dream cake..." className="min-h-[150px] bg-white/50" required />
+                                        <label className="text-sm font-medium">{t('form.message')}</label>
+                                        <Textarea placeholder={t('form.placeholderMessage')} className="min-h-[150px] bg-white/50" required />
                                     </div>
                                     <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-lg rounded-full">
-                                        Send Message
+                                        {t('form.submit')}
                                     </Button>
                                 </form>
                             )}

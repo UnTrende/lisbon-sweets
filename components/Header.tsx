@@ -8,14 +8,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { toggleCart } from '@/lib/features/cartSlice';
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const cartItems = useAppSelector((state) => state.cart.items);
     const dispatch = useAppDispatch();
+    const t = useTranslations('nav');
 
     const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+    const navItems = ['home', 'gallery', 'designer', 'about'];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -74,13 +79,13 @@ export function Header() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-10">
-                        {['Home', 'Gallery', 'Designer', 'About'].map((item) => (
+                        {navItems.map((key) => (
                             <Link
-                                key={item}
-                                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                                key={key}
+                                href={key === 'home' ? '/' : `/${key}`}
                                 className="relative font-sans text-xs font-black uppercase tracking-[0.25em] text-primary-foreground/95 hover:text-white transition-all group/link py-2"
                             >
-                                {item}
+                                {t(key)}
                                 <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-secondary transition-all group-hover/link:w-full shadow-glow-secondary" />
                             </Link>
                         ))}
@@ -88,6 +93,10 @@ export function Header() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-3">
+                        <div className="hidden md:block">
+                            <LanguageSwitcher />
+                        </div>
+
                         <Button
                             variant="ghost"
                             size="icon"
@@ -108,7 +117,7 @@ export function Header() {
                             className="md:hidden text-primary-foreground hover:bg-white/20"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
-                            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                            {isMobileMenuOpen ? <X className="w-5 h-5 text-secondary" /> : <Menu className="w-5 h-5 text-secondary" />}
                         </Button>
                     </div>
                 </div>
@@ -145,15 +154,19 @@ export function Header() {
                             <svg width="100%" height="100%"><rect width="100%" height="100%" fill="url(#header-diamond-pattern)" /></svg>
                         </div>
 
-                        <nav className="flex flex-col p-10 space-y-6 relative z-10 text-center">
-                            {['Home', 'Gallery', 'Designer', 'About'].map((item) => (
+                        <div className="flex justify-center pt-6 pb-2 relative z-10">
+                            <LanguageSwitcher />
+                        </div>
+
+                        <nav className="flex flex-col p-6 space-y-6 relative z-10 text-center">
+                            {navItems.map((key) => (
                                 <Link
-                                    key={item}
-                                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                                    key={key}
+                                    href={key === 'home' ? '/' : `/${key}`}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="font-serif text-3xl font-extrabold text-foreground hover:text-primary transition-all active:scale-90"
                                 >
-                                    {item}
+                                    {t(key)}
                                 </Link>
                             ))}
                         </nav>

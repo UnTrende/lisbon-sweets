@@ -10,6 +10,7 @@ import { ShoppingBag, Eye, Star } from "lucide-react";
 import { useAppDispatch } from "@/lib/hooks";
 import { addItem } from "@/lib/features/cartSlice";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface ProductCardProps {
     product: Product;
@@ -17,11 +18,27 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     const dispatch = useAppDispatch();
+    const t = useTranslations('products.names');
+    const tCat = useTranslations('gallery.categories');
+
+    // Fallback to English name if key doesn't work or isn't present
+    // We try/catch or just rely on next-intl returning the key if missing?
+    // next-intl returns key path if missing by default unless configured otherwise.
+    // Ideally check if nameKey exists.
+    const displayName = product.nameKey ? t(product.nameKey) : product.name;
+    const categoryKey = product.category.toLowerCase();
+
+    // For category: product.category is "Celebration", tCat expects "celebration".
+    // "Celebration" -> "celebration"
+    // However, if translation is missing, we might want fallback?
+    // Using tCat(categoryKey)
+
+    // We also need to fix handling of missing keys if next-intl returns "products.names.undefined" for example.
 
     const handleAddToCart = () => {
         dispatch(addItem({
             id: product.id,
-            name: product.name,
+            name: displayName,
             price: product.price,
             image: product.image,
             quantity: 1
@@ -48,13 +65,13 @@ export function ProductCard({ product }: ProductCardProps) {
                         {!isPlaceholder ? (
                             <Image
                                 src={product.image}
-                                alt={product.name}
+                                alt={displayName}
                                 fill
                                 className="object-cover"
                             />
                         ) : (
                             <span className="font-script text-4xl opacity-10 transform -rotate-12 select-none group-hover:opacity-20 transition-opacity">
-                                {product.name}
+                                {displayName}
                             </span>
                         )}
 
@@ -73,7 +90,8 @@ export function ProductCard({ product }: ProductCardProps) {
                     {/* Category & Badge */}
                     <div className="absolute top-4 left-4 right-4 flex justify-between items-start pointer-events-none">
                         <Badge className="bg-primary/90 text-primary-foreground backdrop-blur-md shadow-brand-md border-none px-3 py-1 font-sans text-fluid-xs uppercase tracking-widest font-black">
-                            {product.category}
+                            {/* Use translated category if available, else original */}
+                            {categoryKey ? tCat(categoryKey) : product.category}
                         </Badge>
                         <div className="flex items-center gap-1 bg-white/80 backdrop-blur-md px-2 py-0.5 rounded-full shadow-sm">
                             <Star className="w-3 h-3 fill-secondary text-secondary" />
@@ -86,7 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 <CardHeader className="p-5 pb-2">
                     <div className="flex flex-col gap-1">
                         <CardTitle className="font-serif text-fluid-2xl font-bold text-primary group-hover:text-secondary transition-colors duration-300 leading-tight">
-                            {product.name}
+                            {displayName}
                         </CardTitle>
                         <span className="font-sans text-fluid-xs font-bold uppercase tracking-[0.2em] text-secondary opacity-80">
                             {product.flavor}

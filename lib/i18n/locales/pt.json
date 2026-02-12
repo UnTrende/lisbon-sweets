@@ -1,0 +1,75 @@
+{
+    "nav": {
+        "home": "Início",
+        "gallery": "Galeria",
+        "designer": "Designer",
+        "about": "Sobre Nós"
+    },
+    "hero": {
+        "tagline": "Feitos à Mão com Amor em Lisboa",
+        "title": "Petals E",
+        "titleAccent": "Sweets",
+        "description": "Descubra bolos artesanais inspirados em sabores tradicionais portugueses e design moderno. Perfeitos para qualquer celebração ou um doce mimo.",
+        "ctaPrimary": "Encomende o Seu Bolo",
+        "ctaSecondary": "Explorar Sabores"
+    },
+    "products": {
+        "featured": "Escolha do Editor",
+        "featuredTitle": "Criações em Destaque",
+        "viewCollection": "Ver Coleção Completa",
+        "addToCart": "Adicionar ao Carrinho",
+        "names": {
+            "pastelDeNata": "Bolo de Pastel de Nata",
+            "sintraForest": "Floresta de Sintra",
+            "algarveAlmond": "Amêndoa do Algarve",
+            "royalRedVelvet": "Veludo Vermelho Real",
+            "lemonBasil": "Brisa de Limão e Manjericão",
+            "portWine": "Bêbado de Vinho do Porto"
+        }
+    },
+    "footer": {
+        "tagline": "Patisserie & Boulangerie",
+        "description": "Doces e bolos artesanais feitos com amor em Lisboa. Trazendo sabores autênticos portugueses às suas celebrações desde 1998.",
+        "shop": "Loja",
+        "company": "Empresa",
+        "categories": "Categorias",
+        "followUs": "Siga-nos:",
+        "madeWith": "Feito com",
+        "inLisbon": "em Lisboa"
+    },
+    "gallery": {
+        "title": "A Coleção",
+        "description": "Navegue pela nossa seleção artesanal de bolos feitos à mão, criados com paixão e os melhores ingredientes locais.",
+        "categories": {
+            "all": "Todos",
+            "celebration": "Celebração",
+            "wedding": "Casamento",
+            "everyday": "Dia a Dia",
+            "seasonal": "Sazonal"
+        },
+        "noProducts": "Ainda não foram encontradas criações nesta categoria.",
+        "viewAll": "Ver Galeria Completa"
+    },
+    "about": {
+        "title": "A Nossa História",
+        "subtitle": "A Cozinhar com Alma Lisboeta Desde 1998",
+        "storyTitle": "Tradição Encontra Elegância",
+        "storyP1": "Tudo começou numa pequena cozinha em Alfama, onde o aroma de canela e pastelaria fresca enchia as ruas estreitas. A Lisbon Sweet Creations nasceu do desejo de trazer os sabores autênticos da doçaria portuguesa para a mesa moderna.",
+        "storyP2": "Acreditamos que um bolo não é apenas uma sobremesa - é uma memória em construção. É por isso que usamos apenas os melhores ingredientes: amêndoas do Algarve, chocolates ricos e frutas frescas dos nossos agricultores de confiança.",
+        "founders": "Maria & Joana",
+        "role": "Fundadoras & Chefes Pasteleiras",
+        "contactTitle": "Entre em Contacto",
+        "contactDesc": "Tem um evento especial? Falemos de bolos.",
+        "form": {
+            "name": "Nome",
+            "email": "Email",
+            "message": "Mensagem",
+            "placeholderName": "O Seu Nome",
+            "placeholderEmail": "ola@exemplo.com",
+            "placeholderMessage": "Conte-nos sobre o bolo dos seus sonhos...",
+            "submit": "Enviar Mensagem",
+            "successTitle": "Mensagem Enviada!",
+            "successDesc": "Entraremos em contacto em breve."
+        }
+    }
+}

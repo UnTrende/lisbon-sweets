@@ -1,6 +1,7 @@
 export interface Product {
     id: string;
     name: string;
+    nameKey?: string;
     description: string;
     price: number;
     category: 'Celebration' | 'Wedding' | 'Everyday' | 'Seasonal';

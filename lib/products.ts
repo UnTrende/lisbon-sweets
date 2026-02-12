@@ -4,6 +4,7 @@ export const products: Product[] = [
     {
         id: "1",
         name: "Pastel de Nata Cake",
+        nameKey: "pastelDeNata",
         description: "A giant, creamy interpretation of Lisbon's most famous pastry. Crispy puff pastry layers with custard cream.",
         price: 35.00,
         category: "Celebration",
@@ -16,6 +17,7 @@ export const products: Product[] = [
     {
         id: "2",
         name: "Sintra Forest",
+        nameKey: "sintraForest",
         description: "Dark chocolate sponge with cherry compote and whipped cream, inspired by the misty forests of Sintra.",
         price: 42.00,
         category: "Celebration",
@@ -28,6 +30,7 @@ export const products: Product[] = [
     {
         id: "3",
         name: "Algarve Almond",
+        nameKey: "algarveAlmond",
         description: "Traditional almond cake made with locally sourced almonds and a hint of orange zest.",
         price: 28.00,
         category: "Everyday",
@@ -40,6 +43,7 @@ export const products: Product[] = [
     {
         id: "4",
         name: "Lemon & Basil Breeze",
+        nameKey: "lemonBasil",
         description: "Light lemon sponge with a basil-infused buttercream. Refreshing and unique.",
         price: 38.00,
         category: "Seasonal",
@@ -52,6 +56,7 @@ export const products: Product[] = [
     {
         id: "5",
         name: "Royal Red Velvet",
+        nameKey: "royalRedVelvet",
         description: "Velvety sponge with cream cheese frosting and edible gold leaf.",
         price: 45.00,
         category: "Wedding",
@@ -64,6 +69,7 @@ export const products: Product[] = [
     {
         id: "6",
         name: "Port Wine Drunkard",
+        nameKey: "portWine",
         description: "Rich chocolate cake soaked in fine Port wine, topped with ganache.",
         price: 40.00,
         category: "Celebration",
