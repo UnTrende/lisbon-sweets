@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/lib/i18n/navigation';
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Clock, Heart } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { AzulejosPattern } from './AzulejosPattern';

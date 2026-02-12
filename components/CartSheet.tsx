@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { toggleCart, removeItem } from '@/lib/features/cartSlice';
 import { Trash2, ShoppingBag } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/lib/i18n/navigation';
 import Image from 'next/image';
 
 export function CartSheet() {

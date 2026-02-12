@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 import { ShoppingBag, Star } from "lucide-react"
 import { useAppDispatch } from "@/lib/hooks"
 import { addItem } from "@/lib/features/cartSlice"
-import Link from "next/link"
+import { Link } from '@/lib/i18n/navigation';
 import Image from "next/image"
 import { useTranslations } from 'next-intl';
 

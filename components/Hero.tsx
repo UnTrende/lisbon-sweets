@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { AzulejosPattern } from "./AzulejosPattern";
-import Link from "next/link";
+import { Link } from '@/lib/i18n/navigation';
 import Image from "next/image";
 
 export function Hero() {
