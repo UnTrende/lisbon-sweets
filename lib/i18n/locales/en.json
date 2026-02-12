@@ -76,5 +76,38 @@
         "title": "Oops! Something went wrong",
         "description": "We encountered an unexpected error. Please try again.",
         "retry": "Try Again"
+    },
+    "checkout": {
+        "title": "Complete Your Request",
+        "yourDetails": "Your Details",
+        "name": "Name",
+        "namePlaceholder": "Your Full Name",
+        "phone": "Number (WhatsApp/Phone)",
+        "phonePlaceholder": "+351 ...",
+        "address": "Delivery Address",
+        "addressPlaceholder": "Full Address",
+        "notes": "Notes (Optional)",
+        "notesPlaceholder": "Any special instructions...",
+        "paymentInfo": "No payment is required now. You can pay via cash or MBWAY upon delivery.",
+        "orderSummary": "Order Summary",
+        "totalEstimate": "Total Estimate",
+        "sendOrder": "Send Order Request",
+        "emptyCartTitle": "Your Cart is Empty",
+        "browseSweets": "Browse our Sweets",
+        "successTitle": "Request Sent!",
+        "successDesc": "We have received your order details. We will contact you shortly via phone/WhatsApp to confirm delivery and payment.",
+        "backHome": "Back to Home"
+    },
+    "testimonials": {
+        "subtitle": "What Our Customers Say",
+        "title": "Sweet Testimonials",
+        "description": "Join hundreds of satisfied customers who have experienced our artisanal creations."
+    },
+    "cart": {
+        "title": "Your Selection",
+        "empty": "Your cart is empty.",
+        "continueShopping": "Continue Shopping",
+        "subtotal": "Subtotal",
+        "finalizeOrder": "Finalize Order"
     }
 }

@@ -76,5 +76,38 @@
         "title": "Ops! Algo deu errado",
         "description": "Encontrámos um erro inesperado. Por favor, tente novamente.",
         "retry": "Tentar Novamente"
+    },
+    "checkout": {
+        "title": "Complete o Seu Pedido",
+        "yourDetails": "Os Seus Detalhes",
+        "name": "Nome",
+        "namePlaceholder": "O Seu Nome Completo",
+        "phone": "Número (WhatsApp/Telemóvel)",
+        "phonePlaceholder": "+351 ...",
+        "address": "Morada de Entrega",
+        "addressPlaceholder": "Morada Completa",
+        "notes": "Notas (Opcional)",
+        "notesPlaceholder": "Instruções especiais...",
+        "paymentInfo": "Nenhum pagamento é necessário agora. Pode pagar via dinheiro ou MBWAY na entrega.",
+        "orderSummary": "Resumo do Pedido",
+        "totalEstimate": "Estimativa Total",
+        "sendOrder": "Enviar Pedido",
+        "emptyCartTitle": "O Seu Carrinho Está Vazio",
+        "browseSweets": "Ver os Nossos Doces",
+        "successTitle": "Pedido Enviado!",
+        "successDesc": "Recebemos os detalhes do seu pedido. Entraremos em contacto em breve via telefone/WhatsApp para confirmar a entrega e o pagamento.",
+        "backHome": "Voltar à Página Inicial"
+    },
+    "testimonials": {
+        "subtitle": "O Que Dizem os Nossos Clientes",
+        "title": "Testemunhos Doces",
+        "description": "Junte-se a centenas de clientes satisfeitos que experimentaram as nossas criações artesanais."
+    },
+    "cart": {
+        "title": "A Sua Seleção",
+        "empty": "O seu carrinho está vazio.",
+        "continueShopping": "Continuar a Comprar",
+        "subtotal": "Subtotal",
+        "finalizeOrder": "Finalizar Pedido"
     }
 }

@@ -14,10 +14,12 @@ import { toggleCart, removeItem } from '@/lib/features/cartSlice';
 import { Trash2, ShoppingBag } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export function CartSheet() {
     const { isOpen, items } = useAppSelector((state) => state.cart);
     const dispatch = useAppDispatch();
+    const t = useTranslations('cart');
 
     const total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
@@ -27,7 +29,7 @@ export function CartSheet() {
                 <SheetHeader className="p-6 border-b border-border/50">
                     <SheetTitle className="font-serif text-2xl text-primary flex items-center gap-2">
                         <ShoppingBag className="w-5 h-5" />
-                        Your Selection
+                        {t('title')}
                     </SheetTitle>
                 </SheetHeader>
 
@@ -35,13 +37,13 @@ export function CartSheet() {
                     {items.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-[50vh] text-muted-foreground">
                             <ShoppingBag className="w-12 h-12 mb-4 opacity-20" />
-                            <p className="font-sans">Your cart is empty.</p>
+                            <p className="font-sans">{t('empty')}</p>
                             <Button
                                 variant="link"
                                 onClick={() => dispatch(toggleCart())}
                                 className="text-primary mt-2"
                             >
-                                Continue Shopping
+                                {t('continueShopping')}
                             </Button>
                         </div>
                     ) : (
@@ -86,13 +88,13 @@ export function CartSheet() {
                 {items.length > 0 && (
                     <div className="p-6 bg-muted/10 border-t border-border/50 space-y-4">
                         <div className="flex justify-between items-center">
-                            <span className="text-muted-foreground">Subtotal</span>
+                            <span className="text-muted-foreground">{t('subtotal')}</span>
                             <span className="font-serif text-xl font-bold text-primary">€{total.toFixed(2)}</span>
                         </div>
                         <Separator />
                         <Link href="/checkout" onClick={() => dispatch(toggleCart())}>
                             <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-6 text-lg rounded-full shadow-lg">
-                                Finalize Order
+                                {t('finalizeOrder')}
                             </Button>
                         </Link>
                     </div>

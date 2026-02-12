@@ -10,12 +10,14 @@ import { AzulejosPattern } from '@/components/AzulejosPattern';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { clearCart } from '@/lib/features/cartSlice';
-import Link from 'next/link';
+import { Link } from '@/lib/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function CheckoutPage() {
     const items = useAppSelector((state) => state.cart.items);
     const dispatch = useAppDispatch();
     const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+    const t = useTranslations('checkout');
 
     // Simple total calculation without tax complexity for now
     const total = items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
@@ -38,13 +40,13 @@ export default function CheckoutPage() {
                     <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                         <span className="text-4xl">📨</span>
                     </div>
-                    <h1 className="font-serif text-3xl text-primary font-bold mb-4">Request Sent!</h1>
+                    <h1 className="font-serif text-3xl text-primary font-bold mb-4">{t('successTitle')}</h1>
                     <p className="text-muted-foreground mb-8">
-                        We have received your order details. We will contact you shortly via phone/WhatsApp to confirm delivery and payment.
+                        {t('successDesc')}
                     </p>
                     <Link href="/">
                         <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                            Back to Home
+                            {t('backHome')}
                         </Button>
                     </Link>
                 </motion.div>
@@ -56,9 +58,9 @@ export default function CheckoutPage() {
         return (
             <main className="min-h-screen bg-background py-20 px-4">
                 <div className="container mx-auto text-center">
-                    <h1 className="font-serif text-3xl text-primary mb-4">Your Cart is Empty</h1>
+                    <h1 className="font-serif text-3xl text-primary mb-4">{t('emptyCartTitle')}</h1>
                     <Link href="/gallery">
-                        <Button variant="link">Browse our Sweets</Button>
+                        <Button variant="link">{t('browseSweets')}</Button>
                     </Link>
                 </div>
             </main>
@@ -68,38 +70,38 @@ export default function CheckoutPage() {
     return (
         <main className="min-h-screen bg-background py-12 px-4 relative">
             <div className="container mx-auto max-w-4xl relative z-10">
-                <h1 className="font-serif text-4xl text-primary font-bold mb-8 text-center">Complete Your Request</h1>
+                <h1 className="font-serif text-4xl text-primary font-bold mb-8 text-center">{t('title')}</h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Simplified Form Section */}
                     <div className="space-y-6">
                         <Card className="border-none shadow-md">
                             <CardHeader>
-                                <CardTitle className="font-serif text-xl">Your Details</CardTitle>
+                                <CardTitle className="font-serif text-xl">{t('yourDetails')}</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="fullName">Name</Label>
-                                    <Input id="fullName" placeholder="Your Full Name" className="h-12 bg-muted/20" />
+                                    <Label htmlFor="fullName">{t('name')}</Label>
+                                    <Input id="fullName" placeholder={t('namePlaceholder')} className="h-12 bg-muted/20" />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="phone">Number (WhatsApp/Phone)</Label>
-                                    <Input id="phone" type="tel" placeholder="+351 ..." className="h-12 bg-muted/20" />
+                                    <Label htmlFor="phone">{t('phone')}</Label>
+                                    <Input id="phone" type="tel" placeholder={t('phonePlaceholder')} className="h-12 bg-muted/20" />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="address">Delivery Address</Label>
-                                    <Input id="address" placeholder="Full Address" className="h-12 bg-muted/20" />
+                                    <Label htmlFor="address">{t('address')}</Label>
+                                    <Input id="address" placeholder={t('addressPlaceholder')} className="h-12 bg-muted/20" />
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="notes">Notes (Optional)</Label>
-                                    <Input id="notes" placeholder="Any special instructions..." className="h-12 bg-muted/20" />
+                                    <Label htmlFor="notes">{t('notes')}</Label>
+                                    <Input id="notes" placeholder={t('notesPlaceholder')} className="h-12 bg-muted/20" />
                                 </div>
                             </CardContent>
                         </Card>
 
                         <div className="bg-primary/5 p-4 rounded-xl border border-primary/10 text-sm text-muted-foreground flex items-center gap-3">
                             <span className="text-2xl">ℹ️</span>
-                            <p>No payment is required now. You can pay via cash or MBWAY upon delivery.</p>
+                            <p>{t('paymentInfo')}</p>
                         </div>
                     </div>
 
@@ -107,7 +109,7 @@ export default function CheckoutPage() {
                     <div>
                         <Card className="border-none shadow-lg sticky top-24 bg-card/80 backdrop-blur-sm">
                             <CardHeader>
-                                <CardTitle className="font-serif text-xl">Order Summary</CardTitle>
+                                <CardTitle className="font-serif text-xl">{t('orderSummary')}</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
@@ -132,13 +134,13 @@ export default function CheckoutPage() {
                                 <Separator />
 
                                 <div className="flex justify-between pt-2 text-xl font-bold text-primary">
-                                    <span>Total Estimate</span>
+                                    <span>{t('totalEstimate')}</span>
                                     <span>€{total.toFixed(2)}</span>
                                 </div>
                             </CardContent>
                             <CardFooter>
                                 <Button onClick={handlePlaceOrder} className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 py-6 text-lg rounded-xl shadow-md transition-transform hover:scale-[1.02]">
-                                    Send Order Request
+                                    {t('sendOrder')}
                                 </Button>
                             </CardFooter>
                         </Card>

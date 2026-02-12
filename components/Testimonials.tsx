@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import * as React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -75,6 +77,8 @@ const testimonials: Testimonial[] = [
 ];
 
 export function Testimonials() {
+    const t = useTranslations('testimonials');
+
     return (
         <section className="py-24 bg-background/50 relative overflow-hidden">
             {/* Background Decoration */}
@@ -88,12 +92,12 @@ export function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <span className="font-script text-fluid-3xl text-secondary block mb-2">What Our Customers Say</span>
+                    <span className="font-script text-fluid-3xl text-secondary block mb-2">{t('subtitle')}</span>
                     <h2 className="font-serif text-fluid-6xl text-primary font-bold mb-6">
-                        Sweet Testimonials
+                        {t('title')}
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto font-sans text-fluid-lg">
-                        Join hundreds of satisfied customers who have experienced our artisanal creations.
+                        {t('description')}
                     </p>
                 </motion.div>
 
