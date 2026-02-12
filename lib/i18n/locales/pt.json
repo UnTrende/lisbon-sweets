@@ -11,7 +11,8 @@
         "titleAccent": "Sweets",
         "description": "Descubra bolos artesanais inspirados em sabores tradicionais portugueses e design moderno. Perfeitos para qualquer celebração ou um doce mimo.",
         "ctaPrimary": "Encomende o Seu Bolo",
-        "ctaSecondary": "Explorar Sabores"
+        "ctaSecondary": "Explorar Sabores",
+        "imageCaption": "Artesanato Artesanal"
     },
     "products": {
         "featured": "Escolha do Editor",
@@ -109,5 +110,71 @@
         "continueShopping": "Continuar a Comprar",
         "subtotal": "Subtotal",
         "finalizeOrder": "Finalizar Pedido"
+    },
+    "designer": {
+        "title": "Desenhe o Seu Bolo de Sonho",
+        "description": "Crie uma obra-prima personalizada para a sua ocasião especial. Escolha a forma, sabores e toques pessoais.",
+        "metaDescription": "Desenhe o seu bolo personalizado com o nosso construtor 3D interativo."
+    },
+    "cakeBuilder": {
+        "steps": {
+            "base": "Seleção de Base",
+            "flavors": "Sabores e Recheios",
+            "personalization": "Personalização",
+            "review": "Revisão"
+        },
+        "labels": {
+            "shape": "Forma",
+            "size": "Tamanho",
+            "flavor": "Sabor",
+            "filling": "Recheio",
+            "message": "Mensagem Personalizada",
+            "messagePlaceholder": "Feliz Aniversário, Maria!",
+            "yourCake": "O Seu Bolo Personalizado",
+            "total": "Total",
+            "addToCart": "Adicionar ao Carrinho",
+            "next": "Próximo Passo",
+            "back": "Voltar"
+        },
+        "shapes": {
+            "round": "Redondo",
+            "square": "Quadrado",
+            "heart": "Coração"
+        },
+        "sizes": {
+            "small": "6\"",
+            "medium": "8\"",
+            "large": "10\""
+        },
+        "flavors": {
+            "vanilla": "Baunilha",
+            "chocolate": "Chocolate",
+            "redVelvet": "Veludo Vermelho",
+            "lemon": "Limão"
+        },
+        "fillings": {
+            "buttercream": "Creme de Manteiga",
+            "ganache": "Ganache",
+            "fruitCompote": "Compota de Frutas",
+            "creamCheese": "Cream Cheese"
+        }
+    },
+    "flavorPalette": {
+        "subtitle": "A Nossa Assinatura",
+        "title": "Explore a Nossa Paleta",
+        "description": "Escolha entre os nossos sabores exclusivos, cada um elaborado com ingredientes premium e um toque de alma lisboeta.",
+        "signatureFlavor": "Sabor Exclusivo",
+        "flavors": {
+            "classicVanilla": "Baunilha Clássica",
+            "richChocolate": "Chocolate Rico",
+            "zestyLemon": "Limão Refrescante",
+            "redVelvet": "Veludo Vermelho",
+            "portWine": "Vinho do Porto",
+            "almondHoney": "Amêndoa e Mel"
+        }
+    },
+    "productCard": {
+        "quickView": "Vista Rápida",
+        "startingFrom": "A partir de"
     }
 }

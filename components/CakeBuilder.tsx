@@ -11,6 +11,7 @@ import { Check, ChevronRight, ChevronLeft, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAppDispatch } from '@/lib/hooks';
 import { addItem, type CartItemOptions } from '@/lib/features/cartSlice';
+import { useTranslations } from 'next-intl';
 
 type Shape = 'Round' | 'Square' | 'Heart';
 type Size = '6"' | '8"' | '10"';
@@ -42,6 +43,13 @@ export function CakeBuilder() {
         message: '',
     });
 
+    const tSteps = useTranslations('cakeBuilder.steps');
+    const tLabels = useTranslations('cakeBuilder.labels');
+    const tShapes = useTranslations('cakeBuilder.shapes');
+    const tSizes = useTranslations('cakeBuilder.sizes');
+    const tFlavors = useTranslations('cakeBuilder.flavors');
+    const tFillings = useTranslations('cakeBuilder.fillings');
+
     const dispatch = useAppDispatch();
     const totalPrice =
         prices.shape[config.shape] +
@@ -52,10 +60,34 @@ export function CakeBuilder() {
     const handleNext = () => setStep(prev => Math.min(prev + 1, 4));
     const handleBack = () => setStep(prev => Math.max(prev - 1, 1));
 
+    // Helper to get translated shape/size/flavor/filling
+    const getTranslatedShape = (shape: Shape) => {
+        const keyMap: Record<Shape, string> = { 'Round': 'round', 'Square': 'square', 'Heart': 'heart' };
+        return tShapes(keyMap[shape]);
+    };
+
+    const getTranslatedSize = (size: Size) => {
+        const keyMap: Record<Size, string> = { '6"': 'small', '8"': 'medium', '10"': 'large' };
+        return tSizes(keyMap[size]);
+    };
+
+    const getTranslatedFlavor = (flavor: Flavor) => {
+        const keyMap: Record<Flavor, string> = { 'Vanilla': 'vanilla', 'Chocolate': 'chocolate', 'Red Velvet': 'redVelvet', 'Lemon': 'lemon' };
+        return tFlavors(keyMap[flavor]);
+    };
+
+    const getTranslatedFilling = (filling: Filling) => {
+        const keyMap: Record<Filling, string> = { 'Buttercream': 'buttercream', 'Ganache': 'ganache', 'Fruit Compote': 'fruitCompote', 'Cream Cheese': 'creamCheese' };
+        return tFillings(keyMap[filling]);
+    };
+
     const handleAddToCart = () => {
+        const translatedShape = getTranslatedShape(config.shape);
+        const translatedSize = getTranslatedSize(config.size);
+
         dispatch(addItem({
             id: `custom-${Date.now()}`,
-            name: `Custom ${config.size} ${config.shape} Cake`,
+            name: `${tLabels('yourCake')} ${translatedSize} ${translatedShape}`,
             price: totalPrice,
             image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=800',
             quantity: 1,
@@ -64,11 +96,16 @@ export function CakeBuilder() {
     };
 
     const steps = [
-        { id: 1, title: "Base Selection" },
-        { id: 2, title: "Flavors & Fillings" },
-        { id: 3, title: "Personalization" },
-        { id: 4, title: "Review" }
+        { id: 1, title: tSteps('base') },
+        { id: 2, title: tSteps('flavors') },
+        { id: 3, title: tSteps('personalization') },
+        { id: 4, title: tSteps('review') }
     ];
+
+    const shapes: Shape[] = ['Round', 'Square', 'Heart'];
+    const sizes: Size[] = ['6"', '8"', '10"'];
+    const flavors: Flavor[] = ['Vanilla', 'Chocolate', 'Red Velvet', 'Lemon'];
+    const fillings: Filling[] = ['Buttercream', 'Ganache', 'Fruit Compote', 'Cream Cheese'];
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -116,7 +153,7 @@ export function CakeBuilder() {
                         )}
                     </motion.div>
                     <div className="absolute bottom-8 text-center">
-                        <p className="font-serif text-fluid-2xl text-primary font-bold">Total: €{totalPrice.toFixed(2)}</p>
+                        <p className="font-serif text-fluid-2xl text-primary font-bold">{tLabels('total')}: €{totalPrice.toFixed(2)}</p>
                     </div>
                 </div>
             </div>
@@ -156,17 +193,17 @@ export function CakeBuilder() {
                                     className="space-y-8"
                                 >
                                     <div className="space-y-4">
-                                        <Label className="text-fluid-lg font-serif text-primary">Shape</Label>
+                                        <Label className="text-fluid-lg font-serif text-primary">{tLabels('shape')}</Label>
                                         <RadioGroup value={config.shape} onValueChange={(v) => setConfig({ ...config, shape: v as Shape })} className="grid grid-cols-3 gap-4">
-                                            {['Round', 'Square', 'Heart'].map((opt) => (
+                                            {shapes.map((opt) => (
                                                 <div key={opt}>
                                                     <RadioGroupItem value={opt} id={opt} className="peer sr-only" />
                                                     <Label
                                                         htmlFor={opt}
                                                         className="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-muted bg-background hover:bg-muted/50 peer-data-[state=checked]:border-primary peer-data-[state=checked]:text-primary cursor-pointer transition-all"
                                                     >
-                                                        <span className="text-lg font-medium">{opt}</span>
-                                                        <span className="text-xs text-muted-foreground mt-1">+€{prices.shape[opt as Shape]}</span>
+                                                        <span className="text-lg font-medium">{getTranslatedShape(opt)}</span>
+                                                        <span className="text-xs text-muted-foreground mt-1">+€{prices.shape[opt]}</span>
                                                     </Label>
                                                 </div>
                                             ))}
@@ -174,17 +211,17 @@ export function CakeBuilder() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <Label className="text-fluid-lg font-serif text-primary">Size</Label>
+                                        <Label className="text-fluid-lg font-serif text-primary">{tLabels('size')}</Label>
                                         <RadioGroup value={config.size} onValueChange={(v) => setConfig({ ...config, size: v as Size })} className="grid grid-cols-3 gap-4">
-                                            {['6"', '8"', '10"'].map((opt) => (
+                                            {sizes.map((opt) => (
                                                 <div key={opt}>
                                                     <RadioGroupItem value={opt} id={opt} className="peer sr-only" />
                                                     <Label
                                                         htmlFor={opt}
                                                         className="flex flex-col items-center justify-center p-4 rounded-xl border-2 border-muted bg-background hover:bg-muted/50 peer-data-[state=checked]:border-primary peer-data-[state=checked]:text-primary cursor-pointer transition-all"
                                                     >
-                                                        <span className="text-lg font-medium">{opt}</span>
-                                                        <span className="text-xs text-muted-foreground mt-1">€{prices.size[opt as Size]}</span>
+                                                        <span className="text-lg font-medium">{getTranslatedSize(opt)}</span>
+                                                        <span className="text-xs text-muted-foreground mt-1">€{prices.size[opt]}</span>
                                                     </Label>
                                                 </div>
                                             ))}
@@ -200,18 +237,18 @@ export function CakeBuilder() {
                                     className="space-y-8"
                                 >
                                     <div className="space-y-4">
-                                        <Label className="text-fluid-lg font-serif text-primary">Cake Flavor</Label>
+                                        <Label className="text-fluid-lg font-serif text-primary">{tLabels('flavor')}</Label>
                                         <div className="grid grid-cols-2 gap-4">
-                                            {['Vanilla', 'Chocolate', 'Red Velvet', 'Lemon'].map((opt) => (
+                                            {flavors.map((opt) => (
                                                 <div
                                                     key={opt}
-                                                    onClick={() => setConfig({ ...config, flavor: opt as Flavor })}
+                                                    onClick={() => setConfig({ ...config, flavor: opt })}
                                                     className={cn(
                                                         "p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between",
                                                         config.flavor === opt ? "border-primary bg-primary/5" : "border-muted hover:border-primary/50"
                                                     )}
                                                 >
-                                                    <span className="font-medium">{opt}</span>
+                                                    <span className="font-medium">{getTranslatedFlavor(opt)}</span>
                                                     {config.flavor === opt && <Check className="w-4 h-4 text-primary" />}
                                                 </div>
                                             ))}
@@ -219,18 +256,18 @@ export function CakeBuilder() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <Label className="text-fluid-lg font-serif text-primary">Filling</Label>
+                                        <Label className="text-fluid-lg font-serif text-primary">{tLabels('filling')}</Label>
                                         <div className="grid grid-cols-2 gap-4">
-                                            {['Buttercream', 'Ganache', 'Fruit Compote', 'Cream Cheese'].map((opt) => (
+                                            {fillings.map((opt) => (
                                                 <div
                                                     key={opt}
-                                                    onClick={() => setConfig({ ...config, filling: opt as Filling })}
+                                                    onClick={() => setConfig({ ...config, filling: opt })}
                                                     className={cn(
                                                         "p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between",
                                                         config.filling === opt ? "border-primary bg-primary/5" : "border-muted hover:border-primary/50"
                                                     )}
                                                 >
-                                                    <span className="font-medium">{opt}</span>
+                                                    <span className="font-medium">{getTranslatedFilling(opt)}</span>
                                                     {config.filling === opt && <Check className="w-4 h-4 text-primary" />}
                                                 </div>
                                             ))}
@@ -246,10 +283,10 @@ export function CakeBuilder() {
                                     className="space-y-8"
                                 >
                                     <div className="space-y-4">
-                                        <Label htmlFor="message" className="text-fluid-lg font-serif text-primary">Message on Cake</Label>
+                                        <Label htmlFor="message" className="text-fluid-lg font-serif text-primary">{tLabels('message')}</Label>
                                         <Input
                                             id="message"
-                                            placeholder="Happy Birthday, Maria!"
+                                            placeholder={tLabels('messagePlaceholder')}
                                             value={config.message}
                                             onChange={(e) => setConfig({ ...config, message: e.target.value })}
                                             maxLength={30}
@@ -266,24 +303,24 @@ export function CakeBuilder() {
                                     initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <h3 className="text-fluid-2xl font-serif text-primary mb-6">Summary</h3>
+                                    <h3 className="text-fluid-2xl font-serif text-primary mb-6">{tLabels('yourCake')}</h3>
                                     <dl className="grid grid-cols-2 gap-4 text-sm">
-                                        <dt className="text-muted-foreground">Shape & Size</dt>
-                                        <dd className="font-medium text-right">{config.shape} - {config.size}</dd>
+                                        <dt className="text-muted-foreground">{tLabels('shape')} & {tLabels('size')}</dt>
+                                        <dd className="font-medium text-right">{getTranslatedShape(config.shape)} - {getTranslatedSize(config.size)}</dd>
 
-                                        <dt className="text-muted-foreground">Flavor</dt>
-                                        <dd className="font-medium text-right">{config.flavor}</dd>
+                                        <dt className="text-muted-foreground">{tLabels('flavor')}</dt>
+                                        <dd className="font-medium text-right">{getTranslatedFlavor(config.flavor)}</dd>
 
-                                        <dt className="text-muted-foreground">Filling</dt>
-                                        <dd className="font-medium text-right">{config.filling}</dd>
+                                        <dt className="text-muted-foreground">{tLabels('filling')}</dt>
+                                        <dd className="font-medium text-right">{getTranslatedFilling(config.filling)}</dd>
 
-                                        <dt className="text-muted-foreground">Message</dt>
+                                        <dt className="text-muted-foreground">{tLabels('message')}</dt>
                                         <dd className="font-medium text-right font-script text-lg text-primary">{config.message || "(None)"}</dd>
                                     </dl>
 
                                     <div className="border-t border-border pt-4 mt-6">
                                         <div className="flex justify-between items-center">
-                                            <span className="text-lg font-bold">Total Price</span>
+                                            <span className="text-lg font-bold">{tLabels('total')}</span>
                                             <span className="text-fluid-2xl font-bold text-primary">€{totalPrice.toFixed(2)}</span>
                                         </div>
                                     </div>
@@ -299,18 +336,18 @@ export function CakeBuilder() {
                                 className={cn(step === 1 && "invisible")}
                             >
                                 <ChevronLeft className="w-4 h-4 mr-2" />
-                                Back
+                                {tLabels('back')}
                             </Button>
 
                             {step < 4 ? (
                                 <Button onClick={handleNext} className="bg-primary text-primary-foreground hover:bg-primary/90">
-                                    Next Step
+                                    {tLabels('next')}
                                     <ChevronRight className="w-4 h-4 ml-2" />
                                 </Button>
                             ) : (
                                 <Button onClick={handleAddToCart} size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg">
                                     <ShoppingBag className="w-5 h-5 mr-2" />
-                                    Add to Cart
+                                    {tLabels('addToCart')}
                                 </Button>
                             )}
                         </div>

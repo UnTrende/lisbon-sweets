@@ -9,31 +9,34 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: 'nav' });
+    const tNav = await getTranslations({ locale, namespace: 'nav' });
+    const tDesigner = await getTranslations({ locale, namespace: 'designer' });
 
     return {
-        title: t('designer'),
-        description: 'Design your custom cake with our interactive 3D builder.',
+        title: tNav('designer'),
+        description: tDesigner('metaDescription'),
         openGraph: {
-            title: t('designer'),
-            description: 'Design your custom cake with our interactive 3D builder.',
+            title: tNav('designer'),
+            description: tDesigner('metaDescription'),
             type: 'website',
             locale: locale,
         },
     };
 }
 
-export default function DesignerPage() {
+async function DesignerContent({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: 'designer' });
+
     return (
         <main className="min-h-screen bg-background relative pb-20">
             <section className="relative py-20 overflow-hidden mb-8">
                 <AzulejosPattern className="opacity-10" />
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <h1 className="font-serif text-5xl md:text-6xl text-primary font-bold mb-4">
-                        Design Your Dream Cake
+                        {t('title')}
                     </h1>
                     <p className="text-muted-foreground max-w-2xl mx-auto font-sans text-lg">
-                        Create a custom masterpiece for your special occasion. Choose your shape, flavors, and personal touches.
+                        {t('description')}
                     </p>
                 </div>
             </section>
@@ -43,4 +46,13 @@ export default function DesignerPage() {
             </section>
         </main>
     );
+}
+
+export default async function DesignerPage({
+    params
+}: {
+    params: Promise<{ locale: string }>
+}) {
+    const { locale } = await params;
+    return <DesignerContent locale={locale} />;
 }

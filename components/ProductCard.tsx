@@ -20,6 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
     const dispatch = useAppDispatch();
     const t = useTranslations('products.names');
     const tCat = useTranslations('gallery.categories');
+    const tCard = useTranslations('productCard');
 
     // Fallback to English name if key doesn't work or isn't present
     // We try/catch or just rely on next-intl returning the key if missing?
@@ -82,7 +83,7 @@ export function ProductCard({ product }: ProductCardProps) {
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                             <Button variant="secondary" size="sm" className="rounded-full gap-2 shadow-xl bg-white/90 backdrop-blur-md text-primary border-none hover:bg-white">
                                 <Eye className="w-4 h-4" />
-                                Quick View
+                                {tCard('quickView')}
                             </Button>
                         </div>
                     </div>
@@ -121,7 +122,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 <CardFooter className="px-5 py-5 mt-auto flex flex-col gap-4">
                     <div className="w-full flex justify-between items-end">
                         <div className="flex flex-col">
-                            <span className="text-fluid-xs uppercase tracking-wider text-muted-foreground font-bold">Starting from</span>
+                            <span className="text-fluid-xs uppercase tracking-wider text-muted-foreground font-bold">{tCard('startingFrom')}</span>
                             <span className="font-serif font-black text-fluid-2xl text-primary">
                                 €{product.price.toFixed(2)}
                             </span>

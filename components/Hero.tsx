@@ -67,7 +67,7 @@ export function Hero() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                             <div className="absolute bottom-6 left-6 right-6">
-                                <span className="text-white font-script text-3xl drop-shadow-lg">Artisanal Craftsmanship</span>
+                                <span className="text-white font-script text-3xl drop-shadow-lg">{t('imageCaption')}</span>
                             </div>
                         </div>
                     </div>

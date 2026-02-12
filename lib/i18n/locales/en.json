@@ -11,7 +11,8 @@
         "titleAccent": "Sweets",
         "description": "Discover artisanal cakes inspired by traditional Portuguese flavors and modern design. Perfect for any celebration or a sweet indulgence.",
         "ctaPrimary": "Order Your Cake",
-        "ctaSecondary": "Explore Flavors"
+        "ctaSecondary": "Explore Flavors",
+        "imageCaption": "Artisanal Craftsmanship"
     },
     "products": {
         "featured": "Editor's Choice",
@@ -109,5 +110,71 @@
         "continueShopping": "Continue Shopping",
         "subtotal": "Subtotal",
         "finalizeOrder": "Finalize Order"
+    },
+    "designer": {
+        "title": "Design Your Dream Cake",
+        "description": "Create a custom masterpiece for your special occasion. Choose your shape, flavors, and personal touches.",
+        "metaDescription": "Design your custom cake with our interactive 3D builder."
+    },
+    "cakeBuilder": {
+        "steps": {
+            "base": "Base Selection",
+            "flavors": "Flavors & Fillings",
+            "personalization": "Personalization",
+            "review": "Review"
+        },
+        "labels": {
+            "shape": "Shape",
+            "size": "Size",
+            "flavor": "Flavor",
+            "filling": "Filling",
+            "message": "Custom Message",
+            "messagePlaceholder": "Happy Birthday, Maria!",
+            "yourCake": "Your Custom Cake",
+            "total": "Total",
+            "addToCart": "Add to Cart",
+            "next": "Next Step",
+            "back": "Back"
+        },
+        "shapes": {
+            "round": "Round",
+            "square": "Square",
+            "heart": "Heart"
+        },
+        "sizes": {
+            "small": "6\"",
+            "medium": "8\"",
+            "large": "10\""
+        },
+        "flavors": {
+            "vanilla": "Vanilla",
+            "chocolate": "Chocolate",
+            "redVelvet": "Red Velvet",
+            "lemon": "Lemon"
+        },
+        "fillings": {
+            "buttercream": "Buttercream",
+            "ganache": "Ganache",
+            "fruitCompote": "Fruit Compote",
+            "creamCheese": "Cream Cheese"
+        }
+    },
+    "flavorPalette": {
+        "subtitle": "Our Signature",
+        "title": "Explore Our Palette",
+        "description": "Choose from our signature flavors, each crafted with premium ingredients and a touch of Lisbon soul.",
+        "signatureFlavor": "Signature Flavor",
+        "flavors": {
+            "classicVanilla": "Classic Vanilla",
+            "richChocolate": "Rich Chocolate",
+            "zestyLemon": "Zesty Lemon",
+            "redVelvet": "Red Velvet",
+            "portWine": "Port Wine",
+            "almondHoney": "Almond & Honey"
+        }
+    },
+    "productCard": {
+        "quickView": "Quick View",
+        "startingFrom": "Starting from"
     }
 }
