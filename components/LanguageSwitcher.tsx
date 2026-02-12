@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from '@/lib/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 
@@ -10,19 +10,8 @@ export function LanguageSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
 
-    const handleLocaleChange = (newLocale: string) => {
-        // pathname usually includes the locale, e.g. /en/about or /pt/about
-        // We need to replace the current locale segment with the new one
-        const segments = pathname.split('/');
-        // segments[0] is empty, segments[1] is the locale
-        if (segments.length > 1) {
-            segments[1] = newLocale;
-        } else {
-            // Fallback for root
-            segments.push(newLocale);
-        }
-        const newPath = segments.join('/');
-        router.push(newPath);
+    const handleLocaleChange = (newLocale: 'pt' | 'en') => {
+        router.replace(pathname, { locale: newLocale });
     };
 
     return (

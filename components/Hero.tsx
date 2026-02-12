@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { AzulejosPattern } from "./AzulejosPattern";
 import { Link } from '@/lib/i18n/navigation';
 import Image from "next/image";
+import { useTranslations } from 'next-intl';
 
 export function Hero() {
+    const t = useTranslations('hero');
+
     return (
         <section className="relative overflow-hidden bg-background pt-24 pb-20 md:pt-32 md:pb-28">
             <AzulejosPattern />
@@ -19,24 +22,23 @@ export function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex-1 text-center md:text-left"
                 >
-                    <span className="font-script text-fluid-4xl text-secondary mb-6 block">Handmade with Love in Lisbon</span>
+                    <span className="font-script text-fluid-4xl text-secondary mb-6 block">{t('tagline')}</span>
                     <h1 className="font-serif text-fluid-8xl font-bold text-primary mb-8 leading-[1.1]">
-                        Petals E <br />
-                        <span className="text-secondary italic">Sweets</span>
+                        {t('title')} <br />
+                        <span className="text-secondary italic">{t('titleAccent')}</span>
                     </h1>
                     <p className="font-sans text-muted-foreground text-fluid-xl mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                        Discover artisanal cakes inspired by traditional Portuguese flavors and modern design.
-                        Perfect for any celebration or a sweet indulgence.
+                        {t('description')}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
                         <Link href="/designer">
                             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-secondary text-fluid-xl px-10 py-8 rounded-full shadow-brand-lg hover:shadow-glow-secondary transition-all duration-500">
-                                Order Your Cake
+                                {t('ctaPrimary')}
                             </Button>
                         </Link>
                         <Link href="/gallery">
                             <Button variant="outline" size="lg" className="text-primary border-primary/20 hover:bg-primary/5 text-fluid-xl px-10 py-8 rounded-full border-2">
-                                Explore Flavors
+                                {t('ctaSecondary')}
                             </Button>
                         </Link>
                     </div>
