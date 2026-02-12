@@ -14,6 +14,6 @@ export default function StoreProvider({
         storeRef.current = makeStore()
     }
 
-    // eslint-disable-next-line react-compiler/react-compiler
+    // eslint-disable-next-line react-hooks/refs
     return <Provider store={storeRef.current}>{children}</Provider>
 }
