@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from '@next/bundle-analyzer';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
-})
+});
+
+const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -36,7 +40,7 @@ const nextConfig: NextConfig = {
             },
             lib: {
               test: /[\\/]node_modules[\\/]/,
-              name(module: any) {
+              name(module: { context: string }) {
                 const packageName = module.context.match(
                   /[\\/]node_modules[\\/](.*?)([\\/]|$)/
                 )?.[1];
@@ -53,7 +57,5 @@ const nextConfig: NextConfig = {
     return config;
   },
 };
-
-const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 export default withBundleAnalyzer(withNextIntl(nextConfig));

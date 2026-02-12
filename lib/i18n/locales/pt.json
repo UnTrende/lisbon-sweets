@@ -71,5 +71,10 @@
             "successTitle": "Mensagem Enviada!",
             "successDesc": "Entraremos em contacto em breve."
         }
+    },
+    "error": {
+        "title": "Ops! Algo deu errado",
+        "description": "Encontrámos um erro inesperado. Por favor, tente novamente.",
+        "retry": "Tentar Novamente"
     }
 }

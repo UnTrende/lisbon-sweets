@@ -121,10 +121,10 @@ export function Testimonials() {
                                                     <Star
                                                         key={i}
                                                         className={`w-4 h-4 ${i < Math.floor(testimonial.rating)
-                                                                ? 'fill-secondary text-secondary'
-                                                                : i < testimonial.rating
-                                                                    ? 'fill-secondary/50 text-secondary/50'
-                                                                    : 'fill-muted text-muted'
+                                                            ? 'fill-secondary text-secondary'
+                                                            : i < testimonial.rating
+                                                                ? 'fill-secondary/50 text-secondary/50'
+                                                                : 'fill-muted text-muted'
                                                             }`}
                                                     />
                                                 ))}
@@ -135,7 +135,7 @@ export function Testimonials() {
 
                                             {/* Comment */}
                                             <p className="text-muted-foreground font-sans leading-relaxed mb-6 flex-grow">
-                                                "{testimonial.comment}"
+                                                &quot;{testimonial.comment}&quot;
                                             </p>
 
                                             {/* Author Info */}

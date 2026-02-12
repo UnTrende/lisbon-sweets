@@ -71,5 +71,10 @@
             "successTitle": "Message Sent!",
             "successDesc": "We'll get back to you soon."
         }
+    },
+    "error": {
+        "title": "Oops! Something went wrong",
+        "description": "We encountered an unexpected error. Please try again.",
+        "retry": "Try Again"
     }
 }

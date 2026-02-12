@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 
 const flavors = [
     { name: "Classic Vanilla", image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&q=80&w=400" },
@@ -38,11 +39,14 @@ export function FlavorPalette() {
                             <Card className="transition-all duration-700 cursor-pointer border-none overflow-hidden group rounded-[2.5rem] bg-card h-full">
                                 <CardContent className="p-0 flex flex-col h-full">
                                     <div className="h-80 w-full overflow-hidden relative">
-                                        <img
-                                            src={flavor.image}
-                                            alt={flavor.name}
-                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                                        />
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={flavor.image}
+                                                alt={flavor.name}
+                                                fill
+                                                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                            />
+                                        </div>
                                         <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
                                     </div>
                                     <div className="p-8 text-center bg-card flex-1 flex flex-col justify-center border-t border-secondary/10">

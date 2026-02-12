@@ -4,8 +4,7 @@ import {
     Sheet,
     SheetContent,
     SheetHeader,
-    SheetTitle,
-    SheetFooter
+    SheetTitle
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -14,6 +13,7 @@ import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { toggleCart, removeItem } from '@/lib/features/cartSlice';
 import { Trash2, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function CartSheet() {
     const { isOpen, items } = useAppSelector((state) => state.cart);
@@ -48,11 +48,12 @@ export function CartSheet() {
                         <div className="py-6 space-y-6">
                             {items.map((item) => (
                                 <div key={item.id} className="flex gap-4">
-                                    <div className="w-20 h-20 bg-muted/30 rounded-lg overflow-hidden shrink-0 border border-border/20">
-                                        <img
+                                    <div className="w-20 h-20 bg-muted/30 rounded-lg overflow-hidden shrink-0 border border-border/20 relative">
+                                        <Image
                                             src={item.image}
                                             alt={item.name}
-                                            className="w-full h-full object-cover"
+                                            fill
+                                            className="object-cover"
                                         />
                                     </div>
                                     <div className="flex-1">

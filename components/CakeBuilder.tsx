@@ -10,7 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Check, ChevronRight, ChevronLeft, ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAppDispatch } from '@/lib/hooks';
-import { addItem } from '@/lib/features/cartSlice';
+import { addItem, type CartItemOptions } from '@/lib/features/cartSlice';
 
 type Shape = 'Round' | 'Square' | 'Heart';
 type Size = '6"' | '8"' | '10"';
@@ -59,7 +59,7 @@ export function CakeBuilder() {
             price: totalPrice,
             image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=800',
             quantity: 1,
-            options: config
+            options: config as unknown as CartItemOptions
         }));
     };
 

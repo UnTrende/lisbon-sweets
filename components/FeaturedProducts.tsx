@@ -58,12 +58,20 @@ export function FeaturedProducts() {
         // Fallback if key doesn't exist
         try {
             return tProd(key);
-        } catch (e) {
+        } catch {
             return key;
         }
     };
 
-    const handleAddToCart = (item: any) => {
+    interface FeaturedProduct {
+        id: number;
+        nameKey: string;
+        price: string;
+        image: string;
+        rating: number;
+    }
+
+    const handleAddToCart = (item: FeaturedProduct) => {
         dispatch(addItem({
             id: item.id.toString(),
             name: getProductName(item.nameKey),

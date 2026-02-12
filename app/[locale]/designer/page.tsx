@@ -1,5 +1,27 @@
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { CakeBuilder } from '@/components/CakeBuilder';
 import { AzulejosPattern } from '@/components/AzulejosPattern';
+
+export async function generateMetadata({
+    params
+}: {
+    params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'nav' });
+
+    return {
+        title: t('designer'),
+        description: 'Design your custom cake with our interactive 3D builder.',
+        openGraph: {
+            title: t('designer'),
+            description: 'Design your custom cake with our interactive 3D builder.',
+            type: 'website',
+            locale: locale,
+        },
+    };
+}
 
 export default function DesignerPage() {
     return (
